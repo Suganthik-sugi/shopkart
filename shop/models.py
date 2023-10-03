@@ -5,7 +5,7 @@ import os
 def getFileName(request,filename):
     now_time=datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
     new_filename="%s%s"%(now_time,filename)
-    return os.path.join('uploads/',new_filename)
+    return os.path.join('uploads',new_filename)
 
 # Create your models here.
 class Catagory(models.Model):

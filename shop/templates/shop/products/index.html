@@ -1,0 +1,38 @@
+
+{% extends 'shop/layouts/main.html' %}
+{% load static %}
+{% block title %}
+Shopkart | Online Shopping
+{% endblock title %}
+
+{% block content %}
+<section class="bg-light py-4 my-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3">Awesome products</h4>
+                <hr style="border-color: #b8bfc2;">
+            </div>
+            {% for item in products %}
+            <div class="col-md-4 col-lg-3">
+                <div class="card my-3">
+                    <img src="{{iem.product_image.url}}" class="card-image-top" alt="Categories">
+                    {{ STATIC_URL }}{{ item.product_image }}
+                    <!-- <img src="{{ STATIC_URL }}{{ item.image }}" alt="{{ item.name }}"> -->
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><a href="/collection/{{ item.name }}">{{ item.name }}</a></h5>
+                        <p class="card-text">
+                            <span class="float-start old_price"><s>Rs.{{ item.original_price|stringformat:'d' }}</s></span>
+                            <span class="float-end new_price">Rs.{{ item.selling_price|stringformat:'d' }}</span></p>
+                        <!-- <a href="#" class="btn btn-primary btn-sm">View Details</a> -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %} 
+            
+        </div>
+    </div>
+</section>
+{% endblock content %}
